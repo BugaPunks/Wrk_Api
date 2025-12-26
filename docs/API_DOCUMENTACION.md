@@ -295,13 +295,13 @@ Gestión de archivos adjuntos y control de versiones.
 
 ### Subir Documento (Raíz)
 - **Ruta:** `POST /:projectId`
-- **Body:** `file` (multipart/form-data).
-- **Descripción:** Sube un nuevo documento. Si ya existe uno con el mismo nombre, crea una nueva versión.
+- **Body:** `file` (multipart/form-data), `sprintId` (opcional), `taskId` (opcional).
+- **Descripción:** Sube un nuevo documento. Si ya existe uno con el mismo nombre, crea una nueva versión. Permite asociar entregables a Sprints o Tareas.
 
 ### Subir Nueva Versión
 - **Ruta:** `POST /:id/versions`
 - **Parámetros:** `id` (ID del documento padre).
-- **Body:** `file` (multipart/form-data).
+- **Body:** `file` (multipart/form-data), `sprintId` (opcional), `taskId` (opcional).
 - **Descripción:** Sube explícitamente una nueva versión de un documento.
 
 ### Historial de Versiones
@@ -371,8 +371,9 @@ Reportes y análisis de datos.
 
 ## 🔄 Retrospectivas (`/api/retrospectives`)
 
-Gestión del tablero de retrospectiva ("Went Well", "To Improve", "Action Items").
+Gestión del tablero de retrospectiva.
 
 - `GET /:sprintId`: Obtiene items del tablero.
 - `POST /`: Crea un nuevo item/nota. Notifica al equipo.
+  - **Body:** `sprintId` (UUID), `type` ("WENT_WELL", "TO_IMPROVE", "ACTION_ITEM"), `content` (string).
 - `DELETE /:id`: Elimina un item.
