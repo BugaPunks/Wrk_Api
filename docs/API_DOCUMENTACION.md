@@ -231,13 +231,13 @@ Gestión de tareas individuales.
 ### Crear Tarea
 - **Ruta:** `POST /`
 - **Descripción:** Crea una nueva tarea. Genera notificación si se asigna.
-- **Body:** `title`, `description`, `projectId`, `assigneeId`, `priority`, `deadline`, `status`, `sprintId`, `userStoryId`.
+- **Body:** `title`, `description`, `projectId`, `assigneeId`, `priority`, `deadline`, `status`, `sprintId`, `userStoryId`, `orderIndex` (para orden visual en Kanban).
 - **Respuestas:** `201 Created`.
 
 ### Actualizar Tarea
 - **Ruta:** `PUT /:id`
 - **Descripción:** Actualiza estado, asignación, fechas, etc. Maneja lógica de `completedAt`.
-- **Body:** Campos a actualizar.
+- **Body:** Campos a actualizar (incluye `orderIndex`).
 - **Respuestas:** `200 OK`.
 
 ### Eliminar Tarea
@@ -253,8 +253,8 @@ Gestión de requisitos del producto.
 ### Endpoints Estándar
 - `GET /`: Obtener todas.
 - `GET /:id`: Obtener por ID.
-- `POST /`: Crear (`title`, `description`, `acceptance`, `projectId`, `assigneeId`, `priority`, `storyPoints`).
-- `PUT /:id`: Actualizar. Notifica si cambia el asignado.
+- `POST /`: Crear (`title`, `description`, `acceptance`, `projectId`, `assigneeId`, `priority`, `storyPoints`, `orderIndex`).
+- `PUT /:id`: Actualizar. Notifica si cambia el asignado (incluye `orderIndex`).
 - `DELETE /:id`: Eliminar.
 
 ---
