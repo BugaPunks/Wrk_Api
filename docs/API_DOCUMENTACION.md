@@ -244,6 +244,16 @@ Gestión de tareas individuales.
 - **Ruta:** `DELETE /:id`
 - **Respuestas:** `200 OK`.
 
+### Comentarios en Tareas
+- **Ruta:** `GET /:id/comments`
+- **Descripción:** Obtiene los comentarios de una tarea.
+- **Respuestas:** `200 OK` (lista de comentarios con autor y fecha).
+
+- **Ruta:** `POST /:id/comments`
+- **Descripción:** Agrega un comentario a una tarea. Notifica al asignado/dueño.
+- **Body:** `content`.
+- **Respuestas:** `201 Created`.
+
 ---
 
 ## 📖 Historias de Usuario (`/api/user-stories`)
