@@ -28,7 +28,7 @@ Endpoints para gestión de sesiones y registro de usuarios. Utiliza JWT para aut
   - `name`: string (requerido)
   - `email`: string (requerido, formato email válido)
   - `password`: string (requerido, mín. 6 caracteres)
-  - `role`: string (opcional, default: "TEAM_DEVELOPER")
+  - `role`: string (opcional, default: "USER"). Valores: "ADMIN" (Docente), "USER" (Estudiante).
 - **Respuestas:**
   - `201 Created`: Usuario registrado exitosamente.
   - `400 Bad Request`: Faltan campos, email inválido, contraseña corta o email ya registrado.
@@ -63,7 +63,7 @@ Endpoints para la gestión de usuarios.
 - **Ruta:** `GET /`
 - **Descripción:** Obtiene la lista de todos los usuarios registrados.
 - **Respuestas:**
-  - `200 OK`: Lista de usuarios (id, email, nombre, rol, activo, fecha creación).
+  - `200 OK`: Lista de usuarios (id, email, nombre, rol_sistema, activo, fecha creación).
   - `500 Internal Server Error`: Error del servidor.
 
 ### Obtener Usuario por ID
@@ -78,7 +78,7 @@ Endpoints para la gestión de usuarios.
 ### Crear Usuario (Admin)
 - **Ruta:** `POST /`
 - **Descripción:** Permite crear usuarios manualmente (útil para administradores).
-- **Body:** `email`, `name`, `password`, `role` (opcional).
+- **Body:** `email`, `name`, `password`, `role` (opcional: "ADMIN" o "USER").
 - **Respuestas:**
   - `201 Created`: Usuario creado.
   - `400 Bad Request`: Faltan campos o email duplicado.
