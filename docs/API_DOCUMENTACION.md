@@ -324,7 +324,7 @@ Sistema de calificación para tareas, sprints y proyectos.
 - `GET /student/:studentId`: Todas las calificaciones de un estudiante (proyectos + sprints).
 
 ### Gestionar Evaluaciones
-- `POST /`: Crear evaluación (admite contexto de Sprint o Project).
+- `POST /`: Crear evaluación (admite contexto de Sprint o Project). **Body:** requiere `rubricId`.
 - `PUT /:id`: Modificar evaluación existente (feedback, nota, criterios).
 
 ---
@@ -334,7 +334,7 @@ Sistema de calificación para tareas, sprints y proyectos.
 Plantillas de criterios de evaluación.
 
 - `GET /?projectId=...`: Obtiene rúbricas (globales + específicas del proyecto).
-- `POST /`: Crear rúbrica con criterios (`name`, `maxScore`, `weight`).
+- `POST /`: Crear rúbrica con criterios (`name`, `maxScore`, `weight`). Si no se incluye `projectId`, se crea como **Plantilla Global**.
 - `PUT /:id`: Actualizar rúbrica y sus criterios.
 - `DELETE /:id`: Eliminar rúbrica.
 
