@@ -244,12 +244,6 @@ Gestión de tareas individuales.
 - **Ruta:** `DELETE /:id`
 - **Respuestas:** `200 OK`.
 
-### Evaluar Tarea
-- **Ruta:** `POST /:id/evaluate`
-- **Descripción:** Guarda una evaluación para una tarea completada. Notifica al asignado.
-- **Body:** `score`, `feedback`, `evaluatorId`, `criteriaScores` (array).
-- **Respuestas:** `201 Created`.
-
 ---
 
 ## 📖 Historias de Usuario (`/api/user-stories`)
@@ -315,13 +309,12 @@ Sistema de calificación para tareas, sprints y proyectos.
 
 ### Obtener Evaluaciones
 - `GET /:id`: Por ID de evaluación.
-- `GET /task/:taskId`: Todas las evaluaciones de una tarea.
 - `GET /sprint/:sprintId`: Todas las evaluaciones de un sprint.
 - `GET /project/:projectId/general`: Evaluaciones generales del proyecto.
-- `GET /student/:studentId`: Todas las calificaciones de un estudiante (tareas propias + equipo).
+- `GET /student/:studentId`: Todas las calificaciones de un estudiante (proyectos + sprints).
 
 ### Gestionar Evaluaciones
-- `POST /`: Crear evaluación (admite contexto de Task, Sprint o Project).
+- `POST /`: Crear evaluación (admite contexto de Sprint o Project).
 - `PUT /:id`: Modificar evaluación existente (feedback, nota, criterios).
 
 ---
