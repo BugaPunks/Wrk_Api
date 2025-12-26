@@ -263,8 +263,8 @@ Gestión de requisitos del producto.
 ### Endpoints Estándar
 - `GET /`: Obtener todas.
 - `GET /:id`: Obtener por ID.
-- `POST /`: Crear (`title`, `description`, `acceptance`, `projectId`, `assigneeId`, `priority`, `storyPoints`, `orderIndex`).
-- `PUT /:id`: Actualizar. Notifica si cambia el asignado (incluye `orderIndex`).
+- `POST /`: Crear (`title`, `description`, `acceptanceCriteria` (array), `projectId`, `assigneeId`, `priority`, `storyPoints`, `status` (PENDING, IN_PROGRESS, DONE), `orderIndex`).
+- `PUT /:id`: Actualizar. Notifica si cambia el asignado (incluye `orderIndex`, `status`, `acceptanceCriteria`).
 - `DELETE /:id`: Eliminar.
 
 ---
