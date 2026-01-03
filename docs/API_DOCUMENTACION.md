@@ -176,7 +176,8 @@ Gestión de ciclos de trabajo (Sprints).
 
 ### Obtener Sprints
 - **Ruta:** `GET /`
-- **Descripción:** Obtiene todos los sprints.
+- **Query Params:** `projectId` (Requerido para filtrar por proyecto).
+- **Descripción:** Obtiene todos los sprints de un proyecto.
 - **Respuestas:** `200 OK` con lista de sprints.
 
 ### Obtener Sprint por ID
@@ -206,6 +207,12 @@ Gestión de ciclos de trabajo (Sprints).
 - **Parámetros:** `id` (UUID del sprint)
 - **Body:** `userStoryId`.
 - **Respuestas:** `201 Created` con la historia actualizada.
+
+### Cerrar Sprint
+- **Ruta:** `POST /:id/close`
+- **Descripción:** Finaliza el sprint. Cambia estado a COMPLETED, calcula velocidad final y mueve historias no terminadas al Backlog.
+- **Parámetros:** `id` (UUID del sprint)
+- **Respuestas:** `200 OK` con resumen del cierre.
 
 ### Eliminar Sprint
 - **Ruta:** `DELETE /:id`
@@ -261,7 +268,7 @@ Gestión de tareas individuales.
 Gestión de requisitos del producto.
 
 ### Endpoints Estándar
-- `GET /`: Obtener todas.
+- `GET /`: Obtener todas. **Query Params:** `projectId` (Requerido), `sprintId` (Opcional).
 - `GET /:id`: Obtener por ID.
 - `POST /`: Crear (`title`, `description`, `acceptanceCriteria` (array), `projectId`, `assigneeId`, `priority`, `storyPoints`, `status` (PENDING, IN_PROGRESS, DONE), `orderIndex`).
 - `PUT /:id`: Actualizar. Notifica si cambia el asignado (incluye `orderIndex`, `status`, `acceptanceCriteria`).
@@ -359,6 +366,16 @@ Reportes y análisis de datos.
 ### Exportar Datos
 - **Ruta:** `GET /export/projects/:projectId`
 - **Descripción:** Genera y descarga un archivo CSV con el reporte del proyecto.
+
+---
+
+## 📅 Calendario (`/api/calendar`)
+
+### Obtener Eventos
+- **Ruta:** `GET /events`
+- **Query Params:** `projectId`, `start` (fecha), `end` (fecha).
+- **Descripción:** Obtiene lista combinada de eventos (Inicio/Fin de Sprints, Fechas de entrega de Tareas) para mostrar en calendario.
+- **Respuestas:** `200 OK` (lista de objetos con title, start, end, type).
 
 ---
 
